@@ -43,10 +43,12 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
       int signalCount = int.tryParse(_inputNumber[i]) ?? 0;
 
       for (int j = 0; j < signalCount; j++) {
-        await _toggleFlash();
         await Future.delayed(const Duration(milliseconds: 500));
+        await _toggleFlash();
       }
-      await Future.delayed(const Duration(seconds: 3));
+      if (i < _inputNumber.length - 1) {
+        await Future.delayed(const Duration(seconds: 3));
+      }
     }
 
     setState(() {
