@@ -14,6 +14,7 @@ class FlashMeterController {
 
   FlashMeterController() {
     loadFavorites();
+    _inputNumberController.add(inputNumber);
   }
 
   final _inputNumberController = StreamController<String>.broadcast();
@@ -25,6 +26,10 @@ class FlashMeterController {
   set inputNumber(String value) {
     _inputNumber = value;
     _inputNumberController.add(value);
+  }
+
+  void dispose() {
+    _inputNumberController.close();
   }
 
   Future<void> toggleFlash() async {
@@ -150,7 +155,7 @@ class FlashMeterController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String> favoriteStrings =
-        favorites.map((fav) => fav.toJsonString().toString()).toList();
+        favorites.map((fav) => fav.toJsonString()).toList();
 
     prefs.setStringList('favorites', favoriteStrings);
   }

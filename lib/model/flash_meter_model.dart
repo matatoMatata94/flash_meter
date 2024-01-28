@@ -6,8 +6,8 @@ class FavoriteItem {
 
   FavoriteItem({required this.title, required this.number});
 
-  Map<String, dynamic> toJsonString() {
-    return {'title': title, 'number': number};
+  String toJsonString() {
+    return '{"title": "$title", "number": "$number"}';
   }
 
   static FavoriteItem fromJsonString(String jsonString) {

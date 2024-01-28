@@ -26,6 +26,12 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   }
 
   @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('FlashMeter')),
@@ -35,21 +41,25 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 150,
-                height: 60,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    inputNumber,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
+              StreamBuilder<String>(
+                  stream: widget.controller.inputNumberStream,
+                  builder: (context, snapshot) {
+                    return Container(
+                      width: 150,
+                      height: 60,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 2, color: Colors.black),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          snapshot.data ?? '',
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    );
+                  }),
               IconButton(
                 icon: const Icon(Icons.backspace),
                 onPressed: () => widget.controller.deleteLastInput(),
