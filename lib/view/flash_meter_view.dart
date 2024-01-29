@@ -35,13 +35,14 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('FlashMeter')),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              StreamBuilder<String>(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                StreamBuilder<String>(
                   stream: widget.controller.inputNumberStream,
                   builder: (context, snapshot) {
                     return Container(
@@ -59,78 +60,80 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                         ),
                       ),
                     );
-                  }),
-              IconButton(
-                icon: const Icon(Icons.backspace),
-                onPressed: () => widget.controller.deleteLastInput(),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  widget.controller.buildNumberButton('1'),
-                  widget.controller.buildNumberButton('2'),
-                  widget.controller.buildNumberButton('3'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  widget.controller.buildNumberButton('4'),
-                  widget.controller.buildNumberButton('5'),
-                  widget.controller.buildNumberButton('6'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  widget.controller.buildNumberButton('7'),
-                  widget.controller.buildNumberButton('8'),
-                  widget.controller.buildNumberButton('9'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const SizedBox(width: 75),
-                  widget.controller.buildNumberButton('0'),
-                  const SizedBox(width: 75),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  await widget.controller.flashBasedOnNumber();
-                },
-                child: const Text('Senden'),
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton.icon(
-                onPressed: () {
-                  widget.controller.showAddFavoritePopup(context);
-                },
-                icon: const Icon(Icons.favorite),
-                label: const Text('Favorit hinzufügen'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.backspace),
+                  onPressed: () => widget.controller.deleteLastInput(),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    widget.controller.buildNumberButton('1'),
+                    widget.controller.buildNumberButton('2'),
+                    widget.controller.buildNumberButton('3'),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    widget.controller.buildNumberButton('4'),
+                    widget.controller.buildNumberButton('5'),
+                    widget.controller.buildNumberButton('6'),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    widget.controller.buildNumberButton('7'),
+                    widget.controller.buildNumberButton('8'),
+                    widget.controller.buildNumberButton('9'),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Expanded(child: SizedBox.shrink()),
+                    widget.controller.buildNumberButton('0'),
+                    const Expanded(child: SizedBox.shrink()),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    await widget.controller.flashBasedOnNumber();
+                  },
+                  child: const Text('Senden'),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    widget.controller.showAddFavoritePopup(context);
+                  },
+                  icon: const Icon(Icons.favorite),
+                  label: const Text('Favorit hinzufügen'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [

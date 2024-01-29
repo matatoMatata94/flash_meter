@@ -88,7 +88,7 @@ class FlashMeterController {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: Size(60, 60),
+          minimumSize: const Size(60, 60),
         ),
         onPressed: () {
           updateInputField(label);
@@ -106,15 +106,17 @@ class FlashMeterController {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Favorit hinzufügen"),
-          content: Column(
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: const InputDecoration(labelText: "Titel"),
-              ),
-              SizedBox(height: 10),
-              Text("Nummer: $inputNumber"),
-            ],
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextField(
+                  controller: titleController,
+                  decoration: const InputDecoration(labelText: "Titel"),
+                ),
+                // SizedBox(height: 10),
+                Text("Nummer: $inputNumber"),
+              ],
+            ),
           ),
           actions: <Widget>[
             TextButton(

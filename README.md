@@ -1,16 +1,20 @@
-# flash_meter
+# FlashMeter App
 
-A new Flutter project.
+The FlashMeter App is a Flutter application that allows users to send flashlight signals based on 
+numeric combinations. The exact purpose of the app is to facilitate PIN entry for new 
+german electricity meters, known as Smart Meters. 
+This is achieved by allowing the user to input the numeric combination in advance into the app, 
+which then outputs the PIN using the flashlight of the smartphone.
 
-## Getting Started
+For example:
+entering the numeric combination 1234 will result in the flashlight flashing as follows: 
+Once, Pause, Twice, Pause, Thrice, Pause, Four times, Pause.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Numeric Input:** Users can input numeric combinations to send flashlight signals.
+- **Add Favorites:** Save and manage your favorite numeric combinations.
+- **Favorites List:** Access a list of saved favorites.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
