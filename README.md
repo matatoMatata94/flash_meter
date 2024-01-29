@@ -18,10 +18,10 @@ Once, Pause, Twice, Pause, Thrice, Pause, Four times, Pause.
 
 ## Screenshots
 
-![Screenshot_1](https://github.com/matatoMatata94/flash_meter/assets/73385202/f1e6de39-7bf7-4d73-a19f-e64fe4647d55)
+![Screenshot_1](https://github.com/matatoMatata94/flash_meter/assets/73385202/9da4d2e5-375f-443c-a775-61f14d483887)
 
-![Screenshot_2](https://github.com/matatoMatata94/flash_meter/assets/73385202/762cf40c-4aba-4782-83f7-1ffcf63aab71)
+![Screenshot_2](https://github.com/matatoMatata94/flash_meter/assets/73385202/01a9b8f1-be3a-4b19-99a7-f02495b691c0)
 
-![Screenshot_3](https://github.com/matatoMatata94/flash_meter/assets/73385202/48f80329-9ef7-440a-97f6-552594d7cb40)
+![Screenshot_3](https://github.com/matatoMatata94/flash_meter/assets/73385202/b17556d3-04f0-4715-ac39-8d4a1ac62f40)
 
-![Screenshot_4](https://github.com/matatoMatata94/flash_meter/assets/73385202/0ac775e9-c006-4358-b8e1-d547c506141f)
+![Screenshot_4](https://github.com/matatoMatata94/flash_meter/assets/73385202/fb2de5f8-18fa-49aa-b2c0-d7bbb0278106)
