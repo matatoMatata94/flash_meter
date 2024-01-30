@@ -83,21 +83,6 @@ class FlashMeterController {
     );
   }
 
-  Widget buildNumberButton(String label) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          minimumSize: const Size(60, 60),
-        ),
-        onPressed: () {
-          updateInputField(label);
-        },
-        child: Text(label),
-      ),
-    );
-  }
-
   void showAddFavoritePopup(BuildContext context) {
     TextEditingController titleController = TextEditingController();
 

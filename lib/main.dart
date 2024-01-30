@@ -1,7 +1,6 @@
+import 'package:flash_meter/controller/flash_meter_controller.dart';
 import 'package:flash_meter/view/flash_meter_view.dart';
 import 'package:flutter/material.dart';
-
-import 'controller/flash_meter_controller.dart';
 
 void main() => runApp(MyApp());
 

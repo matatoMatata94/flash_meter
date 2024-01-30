@@ -31,6 +31,21 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
     super.dispose();
   }
 
+  Widget buildNumberButton(String label) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size(60, 60),
+        ),
+        onPressed: () {
+          widget.controller.updateInputField(label);
+        },
+        child: Text(label),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,32 +89,32 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    widget.controller.buildNumberButton('1'),
-                    widget.controller.buildNumberButton('2'),
-                    widget.controller.buildNumberButton('3'),
+                    buildNumberButton('1'),
+                    buildNumberButton('2'),
+                    buildNumberButton('3'),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    widget.controller.buildNumberButton('4'),
-                    widget.controller.buildNumberButton('5'),
-                    widget.controller.buildNumberButton('6'),
+                    buildNumberButton('4'),
+                    buildNumberButton('5'),
+                    buildNumberButton('6'),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    widget.controller.buildNumberButton('7'),
-                    widget.controller.buildNumberButton('8'),
-                    widget.controller.buildNumberButton('9'),
+                    buildNumberButton('7'),
+                    buildNumberButton('8'),
+                    buildNumberButton('9'),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const Expanded(child: SizedBox.shrink()),
-                    widget.controller.buildNumberButton('0'),
+                    buildNumberButton('0'),
                     const Expanded(child: SizedBox.shrink()),
                   ],
                 ),
