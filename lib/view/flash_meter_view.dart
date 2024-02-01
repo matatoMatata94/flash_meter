@@ -3,22 +3,20 @@ import 'package:flutter/material.dart';
 import '../controller/flash_meter_controller.dart';
 
 class FlashMeterApp extends StatefulWidget {
-  final FlashMeterController controller;
-
-  FlashMeterApp({required this.controller});
-
   @override
   _FlashMeterAppState createState() => _FlashMeterAppState();
 }
 
 class _FlashMeterAppState extends State<FlashMeterApp> {
+  late FlashMeterController _controller;
   late String inputNumber = '';
 
   @override
   void initState() {
     super.initState();
+    _controller = FlashMeterController();
 
-    widget.controller.inputNumberStream.listen((value) {
+    _controller.inputNumberStream.listen((value) {
       setState(() {
         inputNumber = value;
       });
@@ -27,7 +25,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
 
   @override
   void dispose() {
-    widget.controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -39,10 +37,50 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
           minimumSize: const Size(60, 60),
         ),
         onPressed: () {
-          widget.controller.updateInputField(label);
+          _controller.updateInputField(label);
         },
         child: Text(label),
       ),
+    );
+  }
+
+  void showAddFavoritePopup(BuildContext context) {
+    TextEditingController titleController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Favorit hinzufügen"),
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextField(
+                  controller: titleController,
+                  decoration: const InputDecoration(labelText: "Titel"),
+                ),
+                // SizedBox(height: 10),
+                Text("Nummer: $inputNumber"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("Abbrechen"),
+            ),
+            TextButton(
+              onPressed: () {
+                _controller.addFavorite(titleController.text, inputNumber);
+                Navigator.of(context).pop();
+              },
+              child: const Text("Hinzufügen"),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -58,7 +96,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StreamBuilder<String>(
-                  stream: widget.controller.inputNumberStream,
+                  stream: _controller.inputNumberStream,
                   builder: (context, snapshot) {
                     return Container(
                       width: 150,
@@ -79,7 +117,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.backspace),
-                  onPressed: () => widget.controller.deleteLastInput(),
+                  onPressed: () => _controller.deleteLastInput(),
                 ),
               ],
             ),
@@ -126,14 +164,14 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    await widget.controller.flashBasedOnNumber();
+                    await _controller.flashBasedOnNumber();
                   },
                   child: const Text('Senden'),
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton.icon(
                   onPressed: () {
-                    widget.controller.showAddFavoritePopup(context);
+                    showAddFavoritePopup(context);
                   },
                   icon: const Icon(Icons.favorite),
                   label: const Text('Favorit hinzufügen'),
@@ -163,7 +201,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         ],
         onTap: (index) {
           if (index == 1) {
-            widget.controller.navigateToFavorites(context);
+            _controller.navigateToFavorites(context);
           }
         },
       ),

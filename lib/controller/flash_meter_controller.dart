@@ -83,46 +83,6 @@ class FlashMeterController {
     );
   }
 
-  void showAddFavoritePopup(BuildContext context) {
-    TextEditingController titleController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Favorit hinzufügen"),
-          content: SingleChildScrollView(
-            child: Column(
-              children: [
-                TextField(
-                  controller: titleController,
-                  decoration: const InputDecoration(labelText: "Titel"),
-                ),
-                // SizedBox(height: 10),
-                Text("Nummer: $inputNumber"),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("Abbrechen"),
-            ),
-            TextButton(
-              onPressed: () {
-                addFavorite(titleController.text, inputNumber);
-                Navigator.of(context).pop();
-              },
-              child: const Text("Hinzufügen"),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   void deleteFavorite(FavoriteItem favorite) {
     favorites.remove(favorite);
   }

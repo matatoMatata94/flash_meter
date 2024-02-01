@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     FlashMeterController controller = FlashMeterController();
 
     return MaterialApp(
-      home: FlashMeterApp(controller: controller),
+      home: FlashMeterApp(),
     );
   }
 }
