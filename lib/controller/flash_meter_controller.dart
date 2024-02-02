@@ -8,14 +8,16 @@ import '../model/flash_meter_model.dart';
 import '../view/favorites_page.dart';
 
 class FlashMeterController {
-  bool isFlashOn = false;
-  String _inputNumber = '';
-  List<FavoriteItem> favorites = [];
+  final SharedPreferences preferences;
 
-  FlashMeterController() {
+  FlashMeterController(this.preferences) {
     loadFavorites();
     _inputNumberController.add(inputNumber);
   }
+
+  bool isFlashOn = false;
+  String _inputNumber = '';
+  List<FavoriteItem> favorites = [];
 
   final _inputNumberController = StreamController<String>.broadcast();
 

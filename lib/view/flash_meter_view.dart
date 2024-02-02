@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import '../controller/flash_meter_controller.dart';
 
 class FlashMeterApp extends StatefulWidget {
+  final FlashMeterController controller;
+
+  FlashMeterApp(this.controller);
+
   @override
   _FlashMeterAppState createState() => _FlashMeterAppState();
 }
 
 class _FlashMeterAppState extends State<FlashMeterApp> {
-  late FlashMeterController _controller;
   late String inputNumber = '';
 
   @override
   void initState() {
     super.initState();
-    _controller = FlashMeterController();
-
-    _controller.inputNumberStream.listen((value) {
+    widget.controller.inputNumberStream.listen((value) {
       setState(() {
         inputNumber = value;
       });
@@ -25,7 +26,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
@@ -37,7 +38,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
           minimumSize: const Size(60, 60),
         ),
         onPressed: () {
-          _controller.updateInputField(label);
+          widget.controller.updateInputField(label);
         },
         child: Text(label),
       ),
@@ -73,7 +74,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
             ),
             TextButton(
               onPressed: () {
-                _controller.addFavorite(titleController.text, inputNumber);
+                widget.controller
+                    .addFavorite(titleController.text, inputNumber);
                 Navigator.of(context).pop();
               },
               child: const Text("Hinzufügen"),
@@ -96,7 +98,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StreamBuilder<String>(
-                  stream: _controller.inputNumberStream,
+                  stream: widget.controller.inputNumberStream,
                   builder: (context, snapshot) {
                     return Container(
                       width: 150,
@@ -117,7 +119,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.backspace),
-                  onPressed: () => _controller.deleteLastInput(),
+                  onPressed: () => widget.controller.deleteLastInput(),
                 ),
               ],
             ),
@@ -164,7 +166,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    await _controller.flashBasedOnNumber();
+                    await widget.controller.flashBasedOnNumber();
                   },
                   child: const Text('Senden'),
                 ),
@@ -201,7 +203,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         ],
         onTap: (index) {
           if (index == 1) {
-            _controller.navigateToFavorites(context);
+            widget.controller.navigateToFavorites(context);
           }
         },
       ),
