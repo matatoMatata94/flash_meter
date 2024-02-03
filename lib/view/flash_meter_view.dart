@@ -1,9 +1,10 @@
+import 'package:flash_meter/controller/flash_meter_controller.dart';
+import 'package:flash_meter/view/common_widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../controller/flash_meter_controller.dart';
 
 class FlashMeterApp extends StatefulWidget {
   final FlashMeterController controller;
+  TextEditingController titleController = TextEditingController();
 
   FlashMeterApp(this.controller);
 
@@ -45,9 +46,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
     );
   }
 
-  void showAddFavoritePopup(BuildContext context) {
-    TextEditingController titleController = TextEditingController();
-
+  void showAddFavoritePopup(
+      BuildContext context, TextEditingController titleController) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -173,7 +173,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                 const SizedBox(height: 10),
                 ElevatedButton.icon(
                   onPressed: () {
-                    showAddFavoritePopup(context);
+                    showAddFavoritePopup(context, widget.titleController);
                   },
                   icon: const Icon(Icons.favorite),
                   label: const Text('Favorit hinzufügen'),
@@ -190,17 +190,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.input),
-            label: 'Eingabe',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favoriten',
-          ),
-        ],
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 0,
         onTap: (index) {
           if (index == 1) {
             widget.controller.navigateToFavorites(context);

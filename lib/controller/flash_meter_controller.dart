@@ -1,17 +1,16 @@
 import 'dart:async';
 
+import 'package:flash_meter/model/flash_meter_model.dart';
+import 'package:flash_meter/view/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:torch_light/torch_light.dart';
-
-import '../model/flash_meter_model.dart';
-import '../view/favorites_page.dart';
 
 class FlashMeterController {
   final SharedPreferences preferences;
 
   FlashMeterController(this.preferences) {
-    loadFavorites();
+    loadFavorites(preferences);
     _inputNumberController.add(inputNumber);
   }
 
@@ -61,7 +60,7 @@ class FlashMeterController {
   void addFavorite(String title, String number) {
     FavoriteItem favorite = FavoriteItem(title: title, number: number);
     favorites.add(favorite);
-    saveFavorites();
+    saveFavorites(preferences);
   }
 
   void deleteLastInput() {
@@ -89,9 +88,9 @@ class FlashMeterController {
     favorites.remove(favorite);
   }
 
-  Future<void> loadFavorites() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? favoriteStrings = prefs.getStringList('favorites');
+  Future<void> loadFavorites(SharedPreferences preferences) async {
+    preferences = await SharedPreferences.getInstance();
+    List<String>? favoriteStrings = preferences.getStringList('favorites');
 
     if (favoriteStrings != null) {
       favorites = favoriteStrings
@@ -100,12 +99,12 @@ class FlashMeterController {
     }
   }
 
-  Future<void> saveFavorites() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<void> saveFavorites(SharedPreferences preferences) async {
+    preferences = await SharedPreferences.getInstance();
 
     List<String> favoriteStrings =
         favorites.map((fav) => fav.toJsonString()).toList();
 
-    prefs.setStringList('favorites', favoriteStrings);
+    preferences.setStringList('favorites', favoriteStrings);
   }
 }

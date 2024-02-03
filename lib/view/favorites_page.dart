@@ -1,6 +1,6 @@
+import 'package:flash_meter/controller/flash_meter_controller.dart';
+import 'package:flash_meter/view/common_widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../controller/flash_meter_controller.dart';
 
 class FavoritesPage extends StatelessWidget {
   final FlashMeterController controller;
@@ -37,6 +37,14 @@ class FavoritesPage extends StatelessWidget {
               },
             ),
           );
+        },
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 1,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pop(context);
+          }
         },
       ),
     );
