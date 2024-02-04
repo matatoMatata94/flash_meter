@@ -4,8 +4,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final void Function(int) onTap;
 
-  const CustomBottomNavigationBar(
-      {required this.currentIndex, required this.onTap});
+  const CustomBottomNavigationBar({
+    required this.currentIndex,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

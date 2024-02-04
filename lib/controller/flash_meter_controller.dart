@@ -13,7 +13,7 @@ class FlashMeterController {
     loadFavorites(preferences);
     _inputNumberController.add(inputNumber);
   }
-
+  int currentIndex = 0;
   bool isFlashOn = false;
   String _inputNumber = '';
   List<FavoriteItem> favorites = [];
