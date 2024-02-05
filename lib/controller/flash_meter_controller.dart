@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flash_meter/model/flash_meter_model.dart';
-import 'package:flash_meter/view/favorites_page.dart';
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:torch_light/torch_light.dart';
 
@@ -71,18 +69,19 @@ class FlashMeterController {
 
   void updateInputField(String selectedInput) {
     inputNumber += selectedInput;
+    _inputNumberController.add(inputNumber);
   }
 
-  void navigateToFavorites(BuildContext context) async {
-    final selectedFavorite = await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => FavoritesPage(
-          controller: this,
-        ),
-      ),
-    );
-  }
+  // void navigateToFavorites(BuildContext context) async {
+  //   final selectedFavorite = await Navigator.push(
+  //     context,
+  //     MaterialPageRoute(
+  //       builder: (context) => FavoritesPage(
+  //         controller: this,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   void deleteFavorite(FavoriteItem favorite) {
     favorites.remove(favorite);

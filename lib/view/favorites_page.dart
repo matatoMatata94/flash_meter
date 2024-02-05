@@ -29,8 +29,6 @@ class FavoritesPage extends StatelessWidget {
             onTap: () {
               controller.currentIndex = 0;
               controller.updateInputField(controller.favorites[index].number);
-              print(
-                  'Current Index: ${controller.currentIndex}, Tapped Index: $index');
             },
           ),
         );

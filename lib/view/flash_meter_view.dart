@@ -88,11 +88,9 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   }
 
   void onBottomNavigationBarTap(int index) {
-    print(
-        'Current Index: ${widget.controller.currentIndex}, Tapped Index: $index');
     if (index == 1) {
       setState(() {
-        widget.controller.currentIndex = 1;
+        widget.controller.currentIndex = index;
       });
     } else {
       setState(() {
@@ -217,7 +215,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
             child: FavoritesPage(
               controller: widget.controller,
             ),
-          )
+          ),
         ],
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
