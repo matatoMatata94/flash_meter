@@ -1,16 +1,25 @@
 import 'dart:async';
 
 import 'package:flash_meter/model/flash_meter_model.dart';
+import 'package:flash_meter/utils/enums.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:torch_light/torch_light.dart';
 
 class FlashMeterController {
+  late TabItem currentTab;
+  final GlobalKey<NavigatorState> inputPageNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> favoritesPageNavigatorKey =
+      GlobalKey<NavigatorState>();
   final SharedPreferences preferences;
 
   FlashMeterController(this.preferences) {
+    currentTab = TabItem.input;
     loadFavorites(preferences);
     _inputNumberController.add(inputNumber);
   }
+
   int currentIndex = 0;
   bool isFlashOn = false;
   String _inputNumber = '';
@@ -72,16 +81,16 @@ class FlashMeterController {
     _inputNumberController.add(inputNumber);
   }
 
-  // void navigateToFavorites(BuildContext context) async {
-  //   final selectedFavorite = await Navigator.push(
-  //     context,
-  //     MaterialPageRoute(
-  //       builder: (context) => FavoritesPage(
-  //         controller: this,
-  //       ),
-  //     ),
-  //   );
-  // }
+  void navigateToFavorites(BuildContext context) async {
+    final selectedFavorite = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FavoritesPage(
+          controller: this,
+        ),
+      ),
+    );
+  }
 
   void deleteFavorite(FavoriteItem favorite) {
     favorites.remove(favorite);

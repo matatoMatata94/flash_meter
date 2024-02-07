@@ -105,8 +105,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
       appBar: AppBar(title: const Text('FlashMeter')),
       body: Stack(
         children: [
-          Visibility(
-            visible: widget.controller.currentIndex == 0,
+          Offstage(
+            offstage: widget.controller.currentIndex == 0,
             child: StreamBuilder<String>(
                 stream: widget.controller.inputNumberStream,
                 builder: (context, snapshot) {
@@ -210,8 +210,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                   );
                 }),
           ),
-          Visibility(
-            visible: widget.controller.currentIndex == 1,
+          Offstage(
+            offstage: widget.controller.currentIndex == 1,
             child: FavoritesPage(
               controller: widget.controller,
             ),
