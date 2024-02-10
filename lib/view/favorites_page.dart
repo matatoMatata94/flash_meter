@@ -28,7 +28,8 @@ class FavoritesPage extends StatelessWidget {
             subtitle: Text('Nummer: ${controller.favorites[index].number}'),
             onTap: () {
               controller.currentIndex = 0;
-              controller.updateInputField(controller.favorites[index].number);
+              controller.updateInputFieldFromFavorites(
+                  controller.favorites[index].number);
             },
           ),
         );

@@ -6,13 +6,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
-  runApp(MyApp(FlashMeterController(preferences)));
+  FlashMeterController controller = FlashMeterController(preferences);
+  TextEditingController titleController = TextEditingController();
+  runApp(MyApp(controller, titleController));
 }
 
 class MyApp extends StatelessWidget {
   final FlashMeterController controller;
+  final TextEditingController titleController;
 
-  MyApp(this.controller);
+  MyApp(this.controller, this.titleController);
 
   @override
   Widget build(BuildContext context) {
