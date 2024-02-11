@@ -58,41 +58,24 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
           const SizedBox(height: 20),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  buildNumberButton('1'),
-                  buildNumberButton('2'),
-                  buildNumberButton('3'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  buildNumberButton('4'),
-                  buildNumberButton('5'),
-                  buildNumberButton('6'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  buildNumberButton('7'),
-                  buildNumberButton('8'),
-                  buildNumberButton('9'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Expanded(child: SizedBox.shrink()),
-                  buildNumberButton('0'),
-                  const Expanded(child: SizedBox.shrink()),
-                ],
-              ),
-            ],
+          SizedBox(
+            width: 300,
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 20,
+              children: [
+                buildNumberButton('1'),
+                buildNumberButton('2'),
+                buildNumberButton('3'),
+                buildNumberButton('4'),
+                buildNumberButton('5'),
+                buildNumberButton('6'),
+                buildNumberButton('7'),
+                buildNumberButton('8'),
+                buildNumberButton('9'),
+                buildNumberButton('0'),
+              ],
+            ),
           ),
           const SizedBox(height: 20),
           Column(
@@ -105,19 +88,13 @@ class _InputPageState extends State<InputPage> {
                 child: const Text('Senden'),
               ),
               const SizedBox(height: 10),
-              ElevatedButton.icon(
-                onPressed: () {
+              AddToFavoritesButton(
+                titleController: widget.titleController,
+                inputNumber: inputNumber,
+                context: context,
+                showAddFavoritePopup: () {
                   showAddFavoritePopup(context, widget.titleController);
                 },
-                icon: const Icon(Icons.favorite),
-                label: const Text('Favorit hinzufügen'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
               ),
             ],
           ),
@@ -131,7 +108,7 @@ class _InputPageState extends State<InputPage> {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: const Size(60, 60),
+          minimumSize: const Size(70, 60),
         ),
         onPressed: () {
           widget.controller.updateInputFieldFromInput(label);
@@ -162,22 +139,54 @@ class _InputPageState extends State<InputPage> {
           ),
           actions: <Widget>[
             TextButton(
+              child: const Text("Abbrechen"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("Abbrechen"),
             ),
             TextButton(
+              child: const Text("Hinzufügen"),
               onPressed: () {
                 widget.controller
                     .addFavorite(titleController.text, inputNumber);
                 Navigator.of(context).pop();
               },
-              child: const Text("Hinzufügen"),
             ),
           ],
         );
       },
+    );
+  }
+}
+
+class AddToFavoritesButton extends StatelessWidget {
+  final TextEditingController titleController;
+  final String inputNumber;
+  final VoidCallback showAddFavoritePopup;
+  final BuildContext context;
+
+  const AddToFavoritesButton({
+    required this.titleController,
+    required this.inputNumber,
+    required this.showAddFavoritePopup,
+    required this.context,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: () {
+        showAddFavoritePopup;
+      },
+      icon: const Icon(Icons.favorite),
+      label: const Text('Favorit hinzufügen'),
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      ),
     );
   }
 }
