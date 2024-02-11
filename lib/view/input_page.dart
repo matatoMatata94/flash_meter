@@ -29,76 +29,80 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
+    return SafeArea(
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: 150,
-                height: 60,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    inputNumber,
-                    style: const TextStyle(fontSize: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 150,
+                    height: 60,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Colors.black),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        inputNumber,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ),
                   ),
+                  IconButton(
+                    icon: const Icon(Icons.backspace),
+                    onPressed: () => widget.controller.deleteLastInput(),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: 300,
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 20,
+                  children: [
+                    buildNumberButton('1'),
+                    buildNumberButton('2'),
+                    buildNumberButton('3'),
+                    buildNumberButton('4'),
+                    buildNumberButton('5'),
+                    buildNumberButton('6'),
+                    buildNumberButton('7'),
+                    buildNumberButton('8'),
+                    buildNumberButton('9'),
+                    buildNumberButton('0'),
+                  ],
                 ),
               ),
-              IconButton(
-                icon: const Icon(Icons.backspace),
-                onPressed: () => widget.controller.deleteLastInput(),
+              const SizedBox(height: 20),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      await widget.controller.flashBasedOnNumber();
+                    },
+                    child: const Text('Senden'),
+                  ),
+                  const SizedBox(height: 10),
+                  AddToFavoritesButton(
+                    titleController: widget.titleController,
+                    inputNumber: inputNumber,
+                    context: context,
+                    showAddFavoritePopup: () {
+                      showAddFavoritePopup(context, widget.titleController);
+                    },
+                  ),
+                ],
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          SizedBox(
-            width: 300,
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 20,
-              children: [
-                buildNumberButton('1'),
-                buildNumberButton('2'),
-                buildNumberButton('3'),
-                buildNumberButton('4'),
-                buildNumberButton('5'),
-                buildNumberButton('6'),
-                buildNumberButton('7'),
-                buildNumberButton('8'),
-                buildNumberButton('9'),
-                buildNumberButton('0'),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  await widget.controller.flashBasedOnNumber();
-                },
-                child: const Text('Senden'),
-              ),
-              const SizedBox(height: 10),
-              AddToFavoritesButton(
-                titleController: widget.titleController,
-                inputNumber: inputNumber,
-                context: context,
-                showAddFavoritePopup: () {
-                  showAddFavoritePopup(context, widget.titleController);
-                },
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
