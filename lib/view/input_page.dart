@@ -29,6 +29,7 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Center(
         child: SingleChildScrollView(
@@ -39,8 +40,8 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 150,
-                    height: 60,
+                    width: size.width / 2.5,
+                    height: size.height / 12,
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border.all(width: 2, color: Colors.black),
@@ -55,13 +56,14 @@ class _InputPageState extends State<InputPage> {
                   ),
                   IconButton(
                     icon: const Icon(Icons.backspace),
+                    iconSize: 40,
                     onPressed: () => widget.controller.deleteLastInput(),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
               SizedBox(
-                width: 300,
+                width: size.width,
                 child: Wrap(
                   alignment: WrapAlignment.center,
                   spacing: 20,
