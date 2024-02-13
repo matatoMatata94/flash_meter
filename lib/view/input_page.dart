@@ -182,7 +182,7 @@ class AddToFavoritesButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () {
-        showAddFavoritePopup;
+        showAddFavoritePopup();
       },
       icon: const Icon(Icons.favorite),
       label: const Text('Favorit hinzufügen'),
