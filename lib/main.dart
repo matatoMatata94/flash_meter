@@ -11,17 +11,40 @@ void main() async {
   runApp(MyApp(controller, titleController));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final FlashMeterController controller;
   final TextEditingController titleController;
 
   MyApp(this.controller, this.titleController);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+
+  static _MyAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyAppState>()!;
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode _themeMode = ThemeMode.light;
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.light,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
-      home: FlashMeterApp(controller),
+      home: FlashMeterApp(widget.controller),
     );
+  }
+
+  void changeTheme(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
+    });
   }
 }

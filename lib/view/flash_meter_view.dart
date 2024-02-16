@@ -1,8 +1,10 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
-import 'package:flash_meter/view/common_widgets.dart';
-import 'package:flash_meter/view/favorites_page.dart';
-import 'package:flash_meter/view/input_page.dart';
+import 'package:flash_meter/view/pages/favorites_page.dart';
+import 'package:flash_meter/view/pages/input_page.dart';
+import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 class FlashMeterApp extends StatefulWidget {
   final FlashMeterController controller;
@@ -30,7 +32,21 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('FlashMeter')),
+      appBar: AppBar(
+        title: const Text('FlashMeter'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Theme.of(context).brightness == Brightness.light
+                  ? MyApp.of(context).changeTheme(ThemeMode.dark)
+                  : MyApp.of(context).changeTheme(ThemeMode.light);
+            },
+            icon: Theme.of(context).brightness == Brightness.light
+                ? const Icon(Icons.dark_mode_outlined, size: 30)
+                : const Icon(Icons.light_mode_outlined, size: 30),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Offstage(

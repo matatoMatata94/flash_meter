@@ -1,5 +1,5 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
-import 'package:flash_meter/view/common_widgets.dart';
+import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 
 class InputPage extends StatefulWidget {
@@ -45,7 +45,12 @@ class _InputPageState extends State<InputPage> {
                     height: size.height / 12,
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Colors.black),
+                      border: Border.all(
+                        width: 2,
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                      ),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
