@@ -1,4 +1,5 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
+import 'package:flash_meter/view/common_widgets.dart';
 import 'package:flutter/material.dart';
 
 class InputPage extends StatefulWidget {
@@ -62,24 +63,12 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
               const SizedBox(height: 20),
-              SizedBox(
-                width: size.width,
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 20,
-                  children: [
-                    buildNumberButton('1'),
-                    buildNumberButton('2'),
-                    buildNumberButton('3'),
-                    buildNumberButton('4'),
-                    buildNumberButton('5'),
-                    buildNumberButton('6'),
-                    buildNumberButton('7'),
-                    buildNumberButton('8'),
-                    buildNumberButton('9'),
-                    buildNumberButton('0'),
-                  ],
-                ),
+              CustomNumPad(
+                onTap: (label) {
+                  widget.controller.updateInputFieldFromInput(label);
+                },
+                spacing: 20,
+                size: size.width,
               ),
               const SizedBox(height: 20),
               Column(
@@ -105,21 +94,6 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget buildNumberButton(String label) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          minimumSize: const Size(70, 60),
-        ),
-        onPressed: () {
-          widget.controller.updateInputFieldFromInput(label);
-        },
-        child: Text(label),
       ),
     );
   }
@@ -161,38 +135,6 @@ class _InputPageState extends State<InputPage> {
           ],
         );
       },
-    );
-  }
-}
-
-class AddToFavoritesButton extends StatelessWidget {
-  final TextEditingController titleController;
-  final String inputNumber;
-  final VoidCallback showAddFavoritePopup;
-  final BuildContext context;
-
-  const AddToFavoritesButton({
-    required this.titleController,
-    required this.inputNumber,
-    required this.showAddFavoritePopup,
-    required this.context,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: () {
-        showAddFavoritePopup();
-      },
-      icon: const Icon(Icons.favorite),
-      label: const Text('Favorit hinzufügen'),
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.blue,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-      ),
     );
   }
 }
