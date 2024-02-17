@@ -32,6 +32,16 @@ class FlashMeterController {
     _inputNumberController.close();
   }
 
+  void switchFlash() {
+    if (isFlashOn) {
+      isFlashOn = false;
+      TorchLight.disableTorch();
+    } else {
+      TorchLight.enableTorch();
+      isFlashOn = true;
+    }
+  }
+
   Future<void> toggleFlash() async {
     isFlashOn = true;
     TorchLight.enableTorch();

@@ -28,28 +28,24 @@ class CustomBottomNavigationBar extends StatelessWidget {
   }
 }
 
-class AddToFavoritesButton extends StatelessWidget {
-  final TextEditingController titleController;
-  final String inputNumber;
-  final VoidCallback showAddFavoritePopup;
-  final BuildContext context;
+class CustomControlButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final Icon icon;
 
-  const AddToFavoritesButton({
-    required this.titleController,
-    required this.inputNumber,
-    required this.showAddFavoritePopup,
-    required this.context,
+  const CustomControlButton({
+    required this.onPressed,
+    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
+    return IconButton(
       onPressed: () {
-        showAddFavoritePopup();
+        onPressed();
       },
-      icon: const Icon(Icons.favorite),
-      label: const Text('Favorit hinzufügen'),
+      icon: icon,
       style: ElevatedButton.styleFrom(
+        fixedSize: Size(MediaQuery.of(context).size.width / 3.5, 50),
         foregroundColor: Colors.white,
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(

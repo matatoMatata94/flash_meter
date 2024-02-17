@@ -72,25 +72,32 @@ class _InputPageState extends State<InputPage> {
                 onTap: (label) {
                   widget.controller.updateInputFieldFromInput(label);
                 },
-                spacing: 20,
+                spacing: 10,
                 size: size.width,
               ),
               const SizedBox(height: 20),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
+                  CustomControlButton(
+                    icon: widget.controller.isFlashOn == true
+                        ? const Icon(Icons.flashlight_off_outlined)
+                        : const Icon(Icons.flashlight_on_outlined),
+                    onPressed: () {
+                      setState(() {
+                        widget.controller.switchFlash();
+                      });
+                    },
+                  ),
+                  CustomControlButton(
+                    icon: const Icon(Icons.play_arrow_outlined),
                     onPressed: () async {
                       await widget.controller.flashBasedOnNumber();
                     },
-                    child: const Text('Senden'),
                   ),
-                  const SizedBox(height: 10),
-                  AddToFavoritesButton(
-                    titleController: widget.titleController,
-                    inputNumber: inputNumber,
-                    context: context,
-                    showAddFavoritePopup: () {
+                  CustomControlButton(
+                    icon: const Icon(Icons.favorite_border_outlined),
+                    onPressed: () {
                       showAddFavoritePopup(context, widget.titleController);
                     },
                   ),
