@@ -48,15 +48,21 @@ class _InputPageState extends State<InputPage> {
                       border: Border.all(
                         width: 2,
                         color: Theme.of(context).brightness == Brightness.light
-                            ? Colors.black
-                            : Colors.white,
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
                       child: Text(
                         inputNumber,
-                        style: const TextStyle(fontSize: 20),
+                        style: TextStyle(
+                          fontSize: 20,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Colors.white
+                                  : Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -64,6 +70,7 @@ class _InputPageState extends State<InputPage> {
                     icon: const Icon(Icons.backspace),
                     iconSize: 40,
                     onPressed: () => widget.controller.deleteLastInput(),
+                    color: Colors.grey,
                   ),
                 ],
               ),

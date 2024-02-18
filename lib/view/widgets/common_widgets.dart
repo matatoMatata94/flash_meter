@@ -12,6 +12,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.grey,
+      backgroundColor: Colors.black87,
+      elevation: 1.0,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.input),
@@ -96,12 +100,40 @@ class CustomNumPad extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(70, 60),
+          backgroundColor: Colors.black12,
+          elevation: 1,
         ),
         onPressed: () {
           onTap(label);
         },
-        child: Text(label),
+        child: Text(
+          label,
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
     );
+  }
+}
+
+class GradientBackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Rect rect = Offset.zero & size;
+
+    final Gradient gradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [Colors.blue.shade900, Colors.black],
+      stops: const [0.6, 1.0],
+    );
+
+    final Paint paint = Paint()..shader = gradient.createShader(rect);
+
+    canvas.drawRect(rect, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }

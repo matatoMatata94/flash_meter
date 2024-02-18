@@ -33,7 +33,11 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FlashMeter'),
+        backgroundColor: Colors.blue,
+        title: const Text(
+          'FlashMeter',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -42,27 +46,40 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
                   : MyApp.of(context).changeTheme(ThemeMode.light);
             },
             icon: Theme.of(context).brightness == Brightness.light
-                ? const Icon(Icons.dark_mode_outlined, size: 30)
-                : const Icon(Icons.light_mode_outlined, size: 30),
+                ? const Icon(
+                    Icons.dark_mode_outlined,
+                    size: 30,
+                    color: Colors.white,
+                  )
+                : const Icon(
+                    Icons.light_mode_outlined,
+                    size: 30,
+                    color: Colors.black,
+                  ),
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Offstage(
-            offstage: widget.controller.currentIndex != 0,
-            child: InputPage(
-              controller: widget.controller,
-              titleController: widget.titleController,
-            ),
+      body: Container(
+        child: CustomPaint(
+          painter: GradientBackgroundPainter(),
+          child: Stack(
+            children: [
+              Offstage(
+                offstage: widget.controller.currentIndex != 0,
+                child: InputPage(
+                  controller: widget.controller,
+                  titleController: widget.titleController,
+                ),
+              ),
+              Offstage(
+                offstage: widget.controller.currentIndex != 1,
+                child: FavoritesPage(
+                  controller: widget.controller,
+                ),
+              ),
+            ],
           ),
-          Offstage(
-            offstage: widget.controller.currentIndex != 1,
-            child: FavoritesPage(
-              controller: widget.controller,
-            ),
-          ),
-        ],
+        ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: widget.controller.currentIndex,
