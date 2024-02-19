@@ -1,12 +1,19 @@
+import 'package:flash_meter/view/color/color_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final void Function(int) onTap;
+  final Color backgroundColor;
+  final Color selectedItemColor;
+  final Color unselectedItemColor;
 
   const CustomBottomNavigationBar({
     required this.currentIndex,
     required this.onTap,
+    required this.backgroundColor,
+    required this.selectedItemColor,
+    required this.unselectedItemColor,
   });
 
   @override
@@ -14,7 +21,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.grey,
-      backgroundColor: Colors.black87,
+      backgroundColor: backgroundColor,
       elevation: 1.0,
       items: const [
         BottomNavigationBarItem(
@@ -35,10 +42,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
 class CustomControlButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Icon icon;
+  final Color foregroundColor;
+  final Color backgroundColor;
 
   const CustomControlButton({
     required this.onPressed,
     required this.icon,
+    required this.foregroundColor,
+    required this.backgroundColor,
   });
 
   @override
@@ -50,8 +61,8 @@ class CustomControlButton extends StatelessWidget {
       icon: icon,
       style: ElevatedButton.styleFrom(
         fixedSize: Size(MediaQuery.of(context).size.width / 3.5, 50),
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.blue,
+        foregroundColor: foregroundColor,
+        backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),
@@ -116,6 +127,10 @@ class CustomNumPad extends StatelessWidget {
 }
 
 class GradientBackgroundPainter extends CustomPainter {
+  bool isLightMode;
+
+  GradientBackgroundPainter(this.isLightMode);
+
   @override
   void paint(Canvas canvas, Size size) {
     final Rect rect = Offset.zero & size;
@@ -123,8 +138,10 @@ class GradientBackgroundPainter extends CustomPainter {
     final Gradient gradient = LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: [Colors.blue.shade900, Colors.black],
-      stops: const [0.6, 1.0],
+      colors: isLightMode
+          ? ColorConstants.darkScaffoldBackgroundColor
+          : ColorConstants.lightScaffoldBackgroundColor,
+      stops: const [0.8, 1.0],
     );
 
     final Paint paint = Paint()..shader = gradient.createShader(rect);

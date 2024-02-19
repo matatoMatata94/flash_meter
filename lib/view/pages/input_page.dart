@@ -2,6 +2,8 @@ import 'package:flash_meter/controller/flash_meter_controller.dart';
 import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 
+import '../color/color_constants.dart';
+
 class InputPage extends StatefulWidget {
   final FlashMeterController controller;
   final TextEditingController titleController;
@@ -47,9 +49,9 @@ class _InputPageState extends State<InputPage> {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 2,
-                        color: Theme.of(context).brightness == Brightness.light
-                            ? Colors.white
-                            : Colors.black,
+                        color: widget.controller.isLightMode
+                            ? ColorConstants.lightInputBoxColor
+                            : ColorConstants.darkInputBoxColor,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -58,10 +60,9 @@ class _InputPageState extends State<InputPage> {
                         inputNumber,
                         style: TextStyle(
                           fontSize: 20,
-                          color:
-                              Theme.of(context).brightness == Brightness.light
-                                  ? Colors.white
-                                  : Colors.black,
+                          color: widget.controller.isLightMode
+                              ? Colors.white
+                              : Colors.black,
                         ),
                       ),
                     ),
@@ -70,7 +71,9 @@ class _InputPageState extends State<InputPage> {
                     icon: const Icon(Icons.backspace),
                     iconSize: 40,
                     onPressed: () => widget.controller.deleteLastInput(),
-                    color: Colors.grey,
+                    color: widget.controller.isLightMode
+                        ? ColorConstants.lightDeleteButtonColor
+                        : ColorConstants.darkDeleteButtonColor,
                   ),
                 ],
               ),
@@ -95,18 +98,36 @@ class _InputPageState extends State<InputPage> {
                         widget.controller.switchFlash();
                       });
                     },
+                    foregroundColor: widget.controller.isLightMode
+                        ? ColorConstants.lightCustomControlButtonForegroundColor
+                        : ColorConstants.darkCustomControlButtonForegroundColor,
+                    backgroundColor: widget.controller.isLightMode
+                        ? ColorConstants.lightCustomControlButtonBackgroundColor
+                        : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
                   CustomControlButton(
                     icon: const Icon(Icons.play_arrow_outlined),
                     onPressed: () async {
                       await widget.controller.flashBasedOnNumber();
                     },
+                    foregroundColor: widget.controller.isLightMode
+                        ? ColorConstants.lightCustomControlButtonForegroundColor
+                        : ColorConstants.darkCustomControlButtonForegroundColor,
+                    backgroundColor: widget.controller.isLightMode
+                        ? ColorConstants.lightCustomControlButtonBackgroundColor
+                        : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
                   CustomControlButton(
                     icon: const Icon(Icons.favorite_border_outlined),
                     onPressed: () {
                       showAddFavoritePopup(context, widget.titleController);
                     },
+                    foregroundColor: widget.controller.isLightMode
+                        ? ColorConstants.lightCustomControlButtonForegroundColor
+                        : ColorConstants.darkCustomControlButtonForegroundColor,
+                    backgroundColor: widget.controller.isLightMode
+                        ? ColorConstants.lightCustomControlButtonBackgroundColor
+                        : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
                 ],
               ),
