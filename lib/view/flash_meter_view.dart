@@ -42,10 +42,12 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         actions: [
           IconButton(
             onPressed: () {
-              widget.controller.changeThemeMode();
+              print('vorher: ${widget.controller.isLightMode}');
               widget.controller.isLightMode
-                  ? MyApp.of(context).changeTheme(ThemeMode.dark)
-                  : MyApp.of(context).changeTheme(ThemeMode.light);
+                  ? MyApp.of(context).changeTheme(ThemeMode.light)
+                  : MyApp.of(context).changeTheme(ThemeMode.dark);
+              widget.controller.changeThemeMode();
+              print('nachher: ${widget.controller.isLightMode}');
             },
             icon: widget.controller.isLightMode
                 ? const Icon(
@@ -88,11 +90,11 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
             ? ColorConstants.lightBottomNavigationBackgroundColor
             : ColorConstants.darkBottomNavigationBackgroundColor,
         unselectedItemColor: widget.controller.isLightMode
-            ? ColorConstants.darkBottomNavigationSelectedItemColor
+            ? ColorConstants.lightBottomNavigationUnselectedItemColor
             : ColorConstants.darkBottomNavigationUnselectedItemColor,
         selectedItemColor: widget.controller.isLightMode
             ? ColorConstants.lightBottomNavigationSelectedItemColor
-            : ColorConstants.lightBottomNavigationUnselectedItemColor,
+            : ColorConstants.darkBottomNavigationSelectedItemColor,
       ),
     );
   }

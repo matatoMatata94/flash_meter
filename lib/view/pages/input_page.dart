@@ -50,8 +50,8 @@ class _InputPageState extends State<InputPage> {
                       border: Border.all(
                         width: 2,
                         color: widget.controller.isLightMode
-                            ? ColorConstants.lightInputBoxColor
-                            : ColorConstants.darkInputBoxColor,
+                            ? ColorConstants.darkInputBoxColor
+                            : ColorConstants.lightInputBoxColor,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -84,6 +84,12 @@ class _InputPageState extends State<InputPage> {
                 },
                 spacing: 10,
                 size: size.width,
+                numberButtonColor: widget.controller.isLightMode
+                    ? ColorConstants.lightNumberButtonColor
+                    : ColorConstants.darkNumberButtonColor,
+                numberButtonTextColor: widget.controller.isLightMode
+                    ? ColorConstants.lightNumberButtonTextColor
+                    : ColorConstants.darkNumberButtonTextColor,
               ),
               const SizedBox(height: 20),
               Row(

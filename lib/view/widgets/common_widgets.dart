@@ -75,11 +75,15 @@ class CustomNumPad extends StatelessWidget {
   final double size;
   final Function(String) onTap;
   final double spacing;
+  final Color numberButtonColor;
+  final Color numberButtonTextColor;
 
   const CustomNumPad({
     required this.size,
     required this.onTap,
     required this.spacing,
+    required this.numberButtonColor,
+    required this.numberButtonTextColor,
   });
 
   @override
@@ -111,7 +115,7 @@ class CustomNumPad extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(70, 60),
-          backgroundColor: Colors.black12,
+          backgroundColor: numberButtonColor,
           elevation: 1,
         ),
         onPressed: () {
@@ -119,7 +123,7 @@ class CustomNumPad extends StatelessWidget {
         },
         child: Text(
           label,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: numberButtonTextColor),
         ),
       ),
     );
@@ -139,9 +143,9 @@ class GradientBackgroundPainter extends CustomPainter {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: isLightMode
-          ? ColorConstants.darkScaffoldBackgroundColor
-          : ColorConstants.lightScaffoldBackgroundColor,
-      stops: const [0.8, 1.0],
+          ? ColorConstants.lightScaffoldBackgroundColor
+          : ColorConstants.darkScaffoldBackgroundColor,
+      stops: const [0.2, 1.0],
     );
 
     final Paint paint = Paint()..shader = gradient.createShader(rect);
