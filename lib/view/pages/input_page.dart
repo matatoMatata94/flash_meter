@@ -50,8 +50,8 @@ class _InputPageState extends State<InputPage> {
                       border: Border.all(
                         width: 2,
                         color: widget.controller.isLightMode
-                            ? ColorConstants.darkInputBoxColor
-                            : ColorConstants.lightInputBoxColor,
+                            ? ColorConstants.lightInputBoxColor
+                            : ColorConstants.darkInputBoxColor,
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -100,9 +100,7 @@ class _InputPageState extends State<InputPage> {
                         ? const Icon(Icons.flashlight_off_outlined)
                         : const Icon(Icons.flashlight_on_outlined),
                     onPressed: () {
-                      setState(() {
-                        widget.controller.switchFlash();
-                      });
+                      widget.controller.switchFlash();
                     },
                     foregroundColor: widget.controller.isLightMode
                         ? ColorConstants.lightCustomControlButtonForegroundColor

@@ -34,7 +34,9 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: widget.controller.isLightMode
+            ? ColorConstants.lightAppBarBackgroundColor
+            : ColorConstants.darkAppBarBackgroundColor,
         title: const Text(
           'FlashMeter',
           style: TextStyle(color: Colors.white),
