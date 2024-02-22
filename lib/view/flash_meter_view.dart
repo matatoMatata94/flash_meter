@@ -1,4 +1,5 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
+import 'package:flash_meter/controller/flash_meter_theme_controller.dart';
 import 'package:flash_meter/view/pages/favorites_page.dart';
 import 'package:flash_meter/view/pages/input_page.dart';
 import 'package:flash_meter/view/widgets/common_widgets.dart';
@@ -9,9 +10,10 @@ import 'color/color_constants.dart';
 
 class FlashMeterApp extends StatefulWidget {
   final FlashMeterController controller;
+  final ThemeController themeController;
   TextEditingController titleController = TextEditingController();
 
-  FlashMeterApp(this.controller);
+  FlashMeterApp(this.controller, this.themeController);
 
   @override
   _FlashMeterAppState createState() => _FlashMeterAppState();
@@ -34,7 +36,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: widget.controller.isLightMode
+        backgroundColor: widget.themeController.isLightMode
             ? ColorConstants.lightAppBarBackgroundColor
             : ColorConstants.darkAppBarBackgroundColor,
         title: const Text(
@@ -44,14 +46,14 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         actions: [
           IconButton(
             onPressed: () {
-              print('vorher: ${widget.controller.isLightMode}');
-              widget.controller.isLightMode
+              print('vorher: ${widget.themeController.isLightMode}');
+              widget.themeController.isLightMode
                   ? MyApp.of(context).changeTheme(ThemeMode.light)
                   : MyApp.of(context).changeTheme(ThemeMode.dark);
-              widget.controller.changeThemeMode();
-              print('nachher: ${widget.controller.isLightMode}');
+              widget.themeController.changeThemeMode();
+              print('nachher: ${widget.themeController.isLightMode}');
             },
-            icon: widget.controller.isLightMode
+            icon: widget.themeController.isLightMode
                 ? const Icon(
                     Icons.dark_mode_outlined,
                     size: 30,
@@ -66,7 +68,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         ],
       ),
       body: CustomPaint(
-        painter: GradientBackgroundPainter(widget.controller.isLightMode),
+        painter: GradientBackgroundPainter(widget.themeController.isLightMode),
         child: Stack(
           children: [
             Offstage(
@@ -74,6 +76,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
               child: InputPage(
                 controller: widget.controller,
                 titleController: widget.titleController,
+                themeController: widget.themeController,
               ),
             ),
             Offstage(
@@ -88,13 +91,13 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: widget.controller.currentIndex,
         onTap: onBottomNavigationBarTap,
-        backgroundColor: widget.controller.isLightMode
+        backgroundColor: widget.themeController.isLightMode
             ? ColorConstants.lightBottomNavigationBackgroundColor
             : ColorConstants.darkBottomNavigationBackgroundColor,
-        unselectedItemColor: widget.controller.isLightMode
+        unselectedItemColor: widget.themeController.isLightMode
             ? ColorConstants.lightBottomNavigationUnselectedItemColor
             : ColorConstants.darkBottomNavigationUnselectedItemColor,
-        selectedItemColor: widget.controller.isLightMode
+        selectedItemColor: widget.themeController.isLightMode
             ? ColorConstants.lightBottomNavigationSelectedItemColor
             : ColorConstants.darkBottomNavigationSelectedItemColor,
       ),

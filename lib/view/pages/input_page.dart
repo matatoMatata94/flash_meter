@@ -1,4 +1,5 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
+import 'package:flash_meter/controller/flash_meter_theme_controller.dart';
 import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -6,11 +7,13 @@ import '../color/color_constants.dart';
 
 class InputPage extends StatefulWidget {
   final FlashMeterController controller;
+  final ThemeController themeController;
   final TextEditingController titleController;
 
   InputPage({
     required this.controller,
     required this.titleController,
+    required this.themeController,
   });
 
   @override
@@ -49,7 +52,7 @@ class _InputPageState extends State<InputPage> {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 2,
-                        color: widget.controller.isLightMode
+                        color: widget.themeController.isLightMode
                             ? ColorConstants.lightInputBoxColor
                             : ColorConstants.darkInputBoxColor,
                       ),
@@ -60,7 +63,7 @@ class _InputPageState extends State<InputPage> {
                         inputNumber,
                         style: TextStyle(
                           fontSize: 20,
-                          color: widget.controller.isLightMode
+                          color: widget.themeController.isLightMode
                               ? Colors.white
                               : Colors.black,
                         ),
@@ -71,7 +74,7 @@ class _InputPageState extends State<InputPage> {
                     icon: const Icon(Icons.backspace),
                     iconSize: 40,
                     onPressed: () => widget.controller.deleteLastInput(),
-                    color: widget.controller.isLightMode
+                    color: widget.themeController.isLightMode
                         ? ColorConstants.lightDeleteButtonColor
                         : ColorConstants.darkDeleteButtonColor,
                   ),
@@ -84,10 +87,10 @@ class _InputPageState extends State<InputPage> {
                 },
                 spacing: 10,
                 size: size.width,
-                numberButtonColor: widget.controller.isLightMode
+                numberButtonColor: widget.themeController.isLightMode
                     ? ColorConstants.lightNumberButtonColor
                     : ColorConstants.darkNumberButtonColor,
-                numberButtonTextColor: widget.controller.isLightMode
+                numberButtonTextColor: widget.themeController.isLightMode
                     ? ColorConstants.lightNumberButtonTextColor
                     : ColorConstants.darkNumberButtonTextColor,
               ),
@@ -102,10 +105,10 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () {
                       widget.controller.switchFlash();
                     },
-                    foregroundColor: widget.controller.isLightMode
+                    foregroundColor: widget.themeController.isLightMode
                         ? ColorConstants.lightCustomControlButtonForegroundColor
                         : ColorConstants.darkCustomControlButtonForegroundColor,
-                    backgroundColor: widget.controller.isLightMode
+                    backgroundColor: widget.themeController.isLightMode
                         ? ColorConstants.lightCustomControlButtonBackgroundColor
                         : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
@@ -114,10 +117,10 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () async {
                       await widget.controller.flashBasedOnNumber();
                     },
-                    foregroundColor: widget.controller.isLightMode
+                    foregroundColor: widget.themeController.isLightMode
                         ? ColorConstants.lightCustomControlButtonForegroundColor
                         : ColorConstants.darkCustomControlButtonForegroundColor,
-                    backgroundColor: widget.controller.isLightMode
+                    backgroundColor: widget.themeController.isLightMode
                         ? ColorConstants.lightCustomControlButtonBackgroundColor
                         : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
@@ -126,10 +129,10 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () {
                       showAddFavoritePopup(context, widget.titleController);
                     },
-                    foregroundColor: widget.controller.isLightMode
+                    foregroundColor: widget.themeController.isLightMode
                         ? ColorConstants.lightCustomControlButtonForegroundColor
                         : ColorConstants.darkCustomControlButtonForegroundColor,
-                    backgroundColor: widget.controller.isLightMode
+                    backgroundColor: widget.themeController.isLightMode
                         ? ColorConstants.lightCustomControlButtonBackgroundColor
                         : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),

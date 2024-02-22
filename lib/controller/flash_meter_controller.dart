@@ -12,7 +12,6 @@ class FlashMeterController {
     _inputNumberController.add(inputNumber);
   }
 
-  bool isLightMode = true;
   int currentIndex = 0;
   bool isFlashOn = false;
   String _inputNumber = '';
@@ -31,10 +30,6 @@ class FlashMeterController {
 
   void dispose() {
     _inputNumberController.close();
-  }
-
-  void changeThemeMode() {
-    isLightMode = !isLightMode;
   }
 
   void switchFlash() {
