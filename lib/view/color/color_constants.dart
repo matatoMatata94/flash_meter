@@ -1,31 +1,37 @@
+import 'package:flash_meter/controller/flash_meter_theme_controller.dart';
 import 'package:flutter/material.dart';
 
 //#1668b4
 
 class ColorConstants {
-  static List<Color> darkScaffoldBackgroundColor = [
-    const Color(0xFF1668b4),
-    const Color(0xFF144778),
-  ];
-  static List<Color> lightScaffoldBackgroundColor = [
-    Colors.blue.shade500,
-    Colors.white,
-  ];
+  final ThemeController themeController;
 
-  static Color lightAppBarBackgroundColor = Colors.blue;
-  static Color darkAppBarBackgroundColor = const Color(0xFF1668b4);
+  ColorConstants({required this.themeController});
 
-  static Color lightBottomNavigationBackgroundColor = Colors.blue;
-  static Color lightBottomNavigationSelectedItemColor = Colors.white;
-  static Color lightBottomNavigationUnselectedItemColor = Colors.grey;
-  static Color darkBottomNavigationBackgroundColor = const Color(0xFF0f2742);
-  static Color darkBottomNavigationSelectedItemColor = Colors.white;
-  static Color darkBottomNavigationUnselectedItemColor = Colors.grey;
+  late List<Color> scaffoldBackgroundColor = themeController.isLightMode
+      ? [const Color(0xFF1668b4), const Color(0xFF144778)]
+      : [Colors.blue.shade500, Colors.white];
 
-  static Color lightCustomControlButtonForegroundColor = Colors.white;
-  static Color lightCustomControlButtonBackgroundColor = Colors.blue;
-  static Color darkCustomControlButtonForegroundColor = Colors.white;
-  static Color darkCustomControlButtonBackgroundColor = Colors.blue;
+  // static List<Color> darkScaffoldBackgroundColor = [
+  //   const Color(0xFF1668b4),
+  //   const Color(0xFF144778),
+  // ];
+  // static List<Color> lightScaffoldBackgroundColor = [
+  //   Colors.blue.shade500,
+  //   Colors.white,
+  // ];
+
+  late Color appBarBackgroundColor =
+      themeController.isLightMode ? Colors.blue : const Color(0xFF1668b4);
+
+  late Color bottomNavigationBackgroundColor =
+      themeController.isLightMode ? Colors.blue : const Color(0xFF0f2742);
+
+  static Color bottomNavigationSelectedItemColor = Colors.white;
+  static Color bottomNavigationUnselectedItemColor = Colors.grey;
+
+  static Color customControlButtonForegroundColor = Colors.white;
+  static Color customControlButtonBackgroundColor = Colors.blue;
 
   static Color lightInputBoxColor = Colors.white;
   static Color darkInputBoxColor = Colors.black;
