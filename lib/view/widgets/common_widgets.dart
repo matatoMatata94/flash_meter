@@ -158,3 +158,66 @@ class GradientBackgroundPainter extends CustomPainter {
     return false;
   }
 }
+
+class inputBox extends StatelessWidget {
+  const inputBox({
+    required this.width,
+    required this.inputNumber,
+    required this.height,
+    required this.textColor,
+    required this.boxColor,
+  });
+
+  final double width;
+  final double height;
+  final String inputNumber;
+  final Color textColor;
+  final Color boxColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2,
+          color: boxColor,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Center(
+        child: Text(
+          inputNumber,
+          style: TextStyle(
+            fontSize: 20,
+            color: textColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class deleteButton extends StatelessWidget {
+  const deleteButton({
+    required this.color,
+    required this.onPressed,
+  });
+
+  final Color color;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.backspace),
+      iconSize: 40,
+      onPressed: () {
+        onPressed();
+      },
+      color: color,
+    );
+  }
+}

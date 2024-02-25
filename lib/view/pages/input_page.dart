@@ -45,38 +45,18 @@ class _InputPageState extends State<InputPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
+                  inputBox(
                     width: size.width / 2.5,
+                    inputNumber: inputNumber,
                     height: size.height / 12,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: widget.themeController.isLightMode
-                            ? ColorConstants.lightInputBoxColor
-                            : ColorConstants.darkInputBoxColor,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        inputNumber,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: widget.themeController.isLightMode
-                              ? Colors.white
-                              : Colors.black,
-                        ),
-                      ),
-                    ),
+                    boxColor: Colors.black,
+                    textColor: Colors.white,
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.backspace),
-                    iconSize: 40,
-                    onPressed: () => widget.controller.deleteLastInput(),
-                    color: widget.themeController.isLightMode
-                        ? ColorConstants.lightDeleteButtonColor
-                        : ColorConstants.darkDeleteButtonColor,
+                  deleteButton(
+                    color: Colors.white,
+                    onPressed: () {
+                      widget.controller.deleteLastInput();
+                    },
                   ),
                 ],
               ),
@@ -98,6 +78,7 @@ class _InputPageState extends State<InputPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  //Flash on/off Button
                   CustomControlButton(
                     icon: widget.controller.isFlashOn == true
                         ? const Icon(Icons.flashlight_off_outlined)
@@ -112,6 +93,7 @@ class _InputPageState extends State<InputPage> {
                         ? ColorConstants.lightCustomControlButtonBackgroundColor
                         : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
+                  // Send Code-Signal via flash
                   CustomControlButton(
                     icon: const Icon(Icons.play_arrow_outlined),
                     onPressed: () async {
@@ -124,6 +106,7 @@ class _InputPageState extends State<InputPage> {
                         ? ColorConstants.lightCustomControlButtonBackgroundColor
                         : ColorConstants.darkCustomControlButtonBackgroundColor,
                   ),
+                  //Add to Favorite Button
                   CustomControlButton(
                     icon: const Icon(Icons.favorite_border_outlined),
                     onPressed: () {
