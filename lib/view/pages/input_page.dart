@@ -3,8 +3,6 @@ import 'package:flash_meter/controller/flash_meter_theme_controller.dart';
 import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 
-import '../color/color_constants.dart';
-
 class InputPage extends StatefulWidget {
   final FlashMeterController controller;
   final ThemeController themeController;
@@ -67,12 +65,9 @@ class _InputPageState extends State<InputPage> {
                 },
                 spacing: 10,
                 size: size.width,
-                numberButtonColor: widget.themeController.isLightMode
-                    ? ColorConstants.lightNumberButtonColor
-                    : ColorConstants.darkNumberButtonColor,
-                numberButtonTextColor: widget.themeController.isLightMode
-                    ? ColorConstants.lightNumberButtonTextColor
-                    : ColorConstants.darkNumberButtonTextColor,
+                numberButtonColor: widget.themeController.numberButtonColor,
+                numberButtonTextColor:
+                    widget.themeController.numberButtonTextColor,
               ),
               const SizedBox(height: 20),
               Row(
@@ -86,12 +81,10 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () {
                       widget.controller.switchFlash();
                     },
-                    foregroundColor: widget.themeController.isLightMode
-                        ? ColorConstants.lightCustomControlButtonForegroundColor
-                        : ColorConstants.darkCustomControlButtonForegroundColor,
-                    backgroundColor: widget.themeController.isLightMode
-                        ? ColorConstants.lightCustomControlButtonBackgroundColor
-                        : ColorConstants.darkCustomControlButtonBackgroundColor,
+                    foregroundColor: widget
+                        .themeController.customControlButtonForegroundColor,
+                    backgroundColor: widget
+                        .themeController.customControlButtonBackgroundColor,
                   ),
                   // Send Code-Signal via flash
                   CustomControlButton(
@@ -99,12 +92,10 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () async {
                       await widget.controller.flashBasedOnNumber();
                     },
-                    foregroundColor: widget.themeController.isLightMode
-                        ? ColorConstants.lightCustomControlButtonForegroundColor
-                        : ColorConstants.darkCustomControlButtonForegroundColor,
-                    backgroundColor: widget.themeController.isLightMode
-                        ? ColorConstants.lightCustomControlButtonBackgroundColor
-                        : ColorConstants.darkCustomControlButtonBackgroundColor,
+                    foregroundColor: widget
+                        .themeController.customControlButtonForegroundColor,
+                    backgroundColor: widget
+                        .themeController.customControlButtonBackgroundColor,
                   ),
                   //Add to Favorite Button
                   CustomControlButton(
@@ -112,12 +103,10 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () {
                       showAddFavoritePopup(context, widget.titleController);
                     },
-                    foregroundColor: widget.themeController.isLightMode
-                        ? ColorConstants.lightCustomControlButtonForegroundColor
-                        : ColorConstants.darkCustomControlButtonForegroundColor,
-                    backgroundColor: widget.themeController.isLightMode
-                        ? ColorConstants.lightCustomControlButtonBackgroundColor
-                        : ColorConstants.darkCustomControlButtonBackgroundColor,
+                    foregroundColor: widget
+                        .themeController.customControlButtonForegroundColor,
+                    backgroundColor: widget
+                        .themeController.customControlButtonBackgroundColor,
                   ),
                 ],
               ),

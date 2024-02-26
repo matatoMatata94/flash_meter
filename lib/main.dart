@@ -1,4 +1,5 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
+import 'package:flash_meter/controller/flash_meter_theme_controller.dart';
 import 'package:flash_meter/view/flash_meter_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,15 +8,17 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
   FlashMeterController controller = FlashMeterController(preferences);
+  ThemeController themeController = ThemeController();
   TextEditingController titleController = TextEditingController();
-  runApp(MyApp(controller, titleController));
+  runApp(MyApp(controller, titleController, themeController));
 }
 
 class MyApp extends StatefulWidget {
   final FlashMeterController controller;
   final TextEditingController titleController;
+  final ThemeController themeController;
 
-  MyApp(this.controller, this.titleController);
+  MyApp(this.controller, this.titleController, this.themeController);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -38,7 +41,7 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
-      home: FlashMeterApp(widget.controller),
+      home: FlashMeterApp(widget.controller, widget.themeController),
     );
   }
 

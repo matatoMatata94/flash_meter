@@ -6,7 +6,6 @@ import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
-import 'color/color_constants.dart';
 
 class FlashMeterApp extends StatefulWidget {
   final FlashMeterController controller;
@@ -36,9 +35,7 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: widget.themeController.isLightMode
-            ? ColorConstants.lightAppBarBackgroundColor
-            : ColorConstants.darkAppBarBackgroundColor,
+        backgroundColor: widget.themeController.appBarBackgroundColor,
         title: const Text(
           'FlashMeter',
           style: TextStyle(color: Colors.white),
@@ -46,12 +43,10 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         actions: [
           IconButton(
             onPressed: () {
-              print('vorher: ${widget.themeController.isLightMode}');
               widget.themeController.isLightMode
                   ? MyApp.of(context).changeTheme(ThemeMode.light)
                   : MyApp.of(context).changeTheme(ThemeMode.dark);
               widget.themeController.changeThemeMode();
-              print('nachher: ${widget.themeController.isLightMode}');
             },
             icon: widget.themeController.isLightMode
                 ? const Icon(
@@ -68,7 +63,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         ],
       ),
       body: CustomPaint(
-        painter: GradientBackgroundPainter(widget.themeController.isLightMode),
+        painter: GradientBackgroundPainter(
+            widget.themeController.scaffoldBackgroundColor),
         child: Stack(
           children: [
             Offstage(
@@ -91,15 +87,11 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: widget.controller.currentIndex,
         onTap: onBottomNavigationBarTap,
-        backgroundColor: widget.themeController.isLightMode
-            ? ColorConstants.lightBottomNavigationBackgroundColor
-            : ColorConstants.darkBottomNavigationBackgroundColor,
-        unselectedItemColor: widget.themeController.isLightMode
-            ? ColorConstants.lightBottomNavigationUnselectedItemColor
-            : ColorConstants.darkBottomNavigationUnselectedItemColor,
-        selectedItemColor: widget.themeController.isLightMode
-            ? ColorConstants.lightBottomNavigationSelectedItemColor
-            : ColorConstants.darkBottomNavigationSelectedItemColor,
+        backgroundColor: widget.themeController.bottomNavigationBackgroundColor,
+        unselectedItemColor:
+            widget.themeController.bottomNavigationUnselectedItemColor,
+        selectedItemColor:
+            widget.themeController.bottomNavigationSelectedItemColor,
       ),
     );
   }

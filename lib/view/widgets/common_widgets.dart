@@ -1,4 +1,3 @@
-import 'package:flash_meter/view/color/color_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -131,9 +130,9 @@ class CustomNumPad extends StatelessWidget {
 }
 
 class GradientBackgroundPainter extends CustomPainter {
-  bool isLightMode;
+  final List<Color> backgroundColor;
 
-  GradientBackgroundPainter(this.isLightMode);
+  GradientBackgroundPainter(this.backgroundColor);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -142,9 +141,7 @@ class GradientBackgroundPainter extends CustomPainter {
     final Gradient gradient = LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: isLightMode
-          ? ColorConstants.lightScaffoldBackgroundColor
-          : ColorConstants.darkScaffoldBackgroundColor,
+      colors: backgroundColor,
       stops: const [0.2, 1.0],
     );
 
