@@ -86,7 +86,7 @@ class _InputPageState extends State<InputPage> {
                     backgroundColor: widget
                         .themeController.customControlButtonBackgroundColor,
                   ),
-                  // Send Code-Signal via flash
+                  // Send Code-Signal via flash Button
                   CustomControlButton(
                     icon: const Icon(Icons.play_arrow_outlined),
                     onPressed: () async {
