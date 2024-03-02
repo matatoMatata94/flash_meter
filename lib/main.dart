@@ -9,7 +9,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences preferences = await SharedPreferences.getInstance();
   FlashMeterController controller = FlashMeterController(preferences);
-  // ThemeProvider themeController = ThemeProvider();
   TextEditingController titleController = TextEditingController();
   runApp(
     ChangeNotifierProvider(
@@ -32,13 +31,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    // final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
-      // theme: themeProvider.themeData,
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      // themeMode: ,
       debugShowCheckedModeBanner: false,
       home: FlashMeterApp(widget.controller),
     );

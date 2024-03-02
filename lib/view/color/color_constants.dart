@@ -2,9 +2,7 @@ import 'package:flash_meter/controller/flash_meter_theme_provider.dart';
 import 'package:flutter/material.dart';
 
 class ColorConstants {
-  ThemeProvider themeProvider = ThemeProvider();
-
-  ColorConstants();
+  final themeProvider = ThemeProvider();
 
   late List<Color> scaffoldBackgroundColor = themeProvider.isLightMode
       ? [const Color(0xFF1668b4), const Color(0xFF144778)]
