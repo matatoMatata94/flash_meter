@@ -18,22 +18,19 @@ void main() async {
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   final FlashMeterController controller;
   final TextEditingController titleController;
 
   MyApp(this.controller, this.titleController);
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
+      theme: themeProvider.themeData,
       debugShowCheckedModeBanner: false,
-      home: FlashMeterApp(widget.controller),
+      home: FlashMeterApp(controller),
     );
   }
 }

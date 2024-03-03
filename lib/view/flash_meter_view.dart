@@ -44,7 +44,9 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
         actions: [
           IconButton(
             onPressed: () {
-              themeProvider.changeThemeMode();
+              themeProvider.isLightMode
+                  ? themeProvider.changeThemeMode(ThemeData.light())
+                  : themeProvider.changeThemeMode(ThemeData.dark());
             },
             icon: themeProvider.isLightMode
                 ? const Icon(
