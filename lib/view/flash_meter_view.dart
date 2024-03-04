@@ -1,8 +1,8 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
 import 'package:flash_meter/controller/flash_meter_theme_provider.dart';
-import 'package:flash_meter/view/color/color_constants.dart';
 import 'package:flash_meter/view/pages/favorites_page.dart';
 import 'package:flash_meter/view/pages/input_page.dart';
+import 'package:flash_meter/view/theme/color/color_palette.dart';
 import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

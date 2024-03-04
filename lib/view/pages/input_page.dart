@@ -4,7 +4,7 @@ import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../color/color_constants.dart';
+import '../theme/color/color_palette.dart';
 
 class InputPage extends StatefulWidget {
   final FlashMeterController controller;

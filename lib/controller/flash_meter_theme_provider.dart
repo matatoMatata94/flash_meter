@@ -8,9 +8,7 @@ class ThemeProvider extends ChangeNotifier {
 
   void changeThemeMode(ThemeData themeData) {
     _themeData = themeData;
-    print("Before: $isLightMode");
     isLightMode = !isLightMode;
-    print("After: $isLightMode");
     notifyListeners();
   }
 }
