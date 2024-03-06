@@ -34,8 +34,6 @@ class _InputPageState extends State<InputPage> {
 
   @override
   Widget build(BuildContext context) {
-    ColorConstants colorConstants = ColorConstants();
-    final themeProvider = Provider.of<ThemeProvider>(context);
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Center(
