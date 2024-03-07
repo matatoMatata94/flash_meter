@@ -6,7 +6,7 @@ class ThemeProvider extends ChangeNotifier {
 
   // ThemeData get themeData => _themeData;
 
-  void changeThemeMode(ThemeData themeData) {
+  void changeThemeMode() {
     // _themeData = themeData;
     isLightMode = !isLightMode;
     notifyListeners();

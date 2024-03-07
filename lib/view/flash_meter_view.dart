@@ -32,11 +32,10 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
 
   @override
   Widget build(BuildContext context) {
-    ColorConstants colorConstants = ColorConstants();
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colorConstants.appBarBackgroundColor,
+        backgroundColor: ,
         title: const Text(
           'FlashMeter',
           style: TextStyle(color: Colors.white),
@@ -45,8 +44,8 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
           IconButton(
             onPressed: () {
               themeProvider.isLightMode
-                  ? themeProvider.changeThemeMode(ThemeData.light())
-                  : themeProvider.changeThemeMode(ThemeData.dark());
+                  ? themeProvider.changeThemeMode()
+                  : themeProvider.changeThemeMode();
             },
             icon: themeProvider.isLightMode
                 ? const Icon(
@@ -62,26 +61,22 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
           ),
         ],
       ),
-      body: CustomPaint(
-        painter:
-            GradientBackgroundPainter(colorConstants.scaffoldBackgroundColor),
-        child: Stack(
-          children: [
-            Offstage(
-              offstage: widget.controller.currentIndex != 0,
-              child: InputPage(
-                controller: widget.controller,
-                titleController: widget.titleController,
-              ),
+      body: Stack(
+        children: [
+          Offstage(
+            offstage: widget.controller.currentIndex != 0,
+            child: InputPage(
+              controller: widget.controller,
+              titleController: widget.titleController,
             ),
-            Offstage(
-              offstage: widget.controller.currentIndex != 1,
-              child: FavoritesPage(
-                controller: widget.controller,
-              ),
+          ),
+          Offstage(
+            offstage: widget.controller.currentIndex != 1,
+            child: FavoritesPage(
+              controller: widget.controller,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: widget.controller.currentIndex,

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
-      theme: AppTheme(isLightMode: themeProvider.isLightMode).themeData,
+      theme: AppTheme(themeProvider: themeProvider).themeData,
       debugShowCheckedModeBanner: false,
       home: FlashMeterApp(controller),
     );
