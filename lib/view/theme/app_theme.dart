@@ -16,7 +16,6 @@ class AppTheme {
       scaffoldBackgroundColor: color.scaffoldBackgroundColor,
       primaryColorLight: color.primaryColorLight,
       primaryColorDark: color.primaryColorDark,
-      dividerColor: color.dividerColor,
     );
   }
 }

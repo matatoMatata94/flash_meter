@@ -4,7 +4,6 @@ abstract class ColorPalette {
   Color get scaffoldBackgroundColor;
   Color get primaryColorLight;
   Color get primaryColorDark;
-  Color get dividerColor;
 }
 
 class LightColorPalette implements ColorPalette {
@@ -16,9 +15,6 @@ class LightColorPalette implements ColorPalette {
 
   @override
   Color get primaryColorDark => Colors.purple;
-
-  @override
-  Color get dividerColor => Colors.black12;
 }
 
 class DarkColorPalette implements ColorPalette {
@@ -30,7 +26,4 @@ class DarkColorPalette implements ColorPalette {
 
   @override
   Color get primaryColorDark => Colors.yellow;
-
-  @override
-  Color get dividerColor => Colors.red;
 }

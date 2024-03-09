@@ -1,10 +1,6 @@
 import 'package:flash_meter/controller/flash_meter_controller.dart';
-import 'package:flash_meter/controller/flash_meter_theme_provider.dart';
 import 'package:flash_meter/view/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../theme/color/color_palette.dart';
 
 class InputPage extends StatefulWidget {
   final FlashMeterController controller;
@@ -44,14 +40,14 @@ class _InputPageState extends State<InputPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  inputBox(
+                  InputBox(
                     width: size.width / 2.5,
                     inputNumber: inputNumber,
                     height: size.height / 12,
                     boxColor: Colors.black,
                     textColor: Colors.white,
                   ),
-                  deleteButton(
+                  DeleteButton(
                     color: Colors.white,
                     onPressed: () {
                       widget.controller.deleteLastInput();
@@ -66,8 +62,8 @@ class _InputPageState extends State<InputPage> {
                 },
                 spacing: 10,
                 size: size.width,
-                numberButtonColor: colorConstants.numberButtonColor,
-                numberButtonTextColor: colorConstants.numberButtonTextColor,
+                // numberButtonColor: colorConstants.numberButtonColor,
+                // numberButtonTextColor: colorConstants.numberButtonTextColor,
               ),
               const SizedBox(height: 20),
               Row(
@@ -81,10 +77,6 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () {
                       widget.controller.switchFlash();
                     },
-                    foregroundColor:
-                        colorConstants.customControlButtonForegroundColor,
-                    backgroundColor:
-                        colorConstants.customControlButtonBackgroundColor,
                   ),
                   // Send Code-Signal via flash Button
                   CustomControlButton(
@@ -92,10 +84,6 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () async {
                       await widget.controller.flashBasedOnNumber();
                     },
-                    foregroundColor:
-                        colorConstants.customControlButtonForegroundColor,
-                    backgroundColor:
-                        colorConstants.customControlButtonBackgroundColor,
                   ),
                   //Add to Favorite Button
                   CustomControlButton(
@@ -103,10 +91,6 @@ class _InputPageState extends State<InputPage> {
                     onPressed: () {
                       showAddFavoritePopup(context, widget.titleController);
                     },
-                    foregroundColor:
-                        colorConstants.customControlButtonForegroundColor,
-                    backgroundColor:
-                        colorConstants.customControlButtonBackgroundColor,
                   ),
                 ],
               ),

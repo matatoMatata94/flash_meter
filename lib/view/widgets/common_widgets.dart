@@ -3,24 +3,15 @@ import 'package:flutter/material.dart';
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final void Function(int) onTap;
-  final Color backgroundColor;
-  final Color selectedItemColor;
-  final Color unselectedItemColor;
 
   const CustomBottomNavigationBar({
     required this.currentIndex,
     required this.onTap,
-    required this.backgroundColor,
-    required this.selectedItemColor,
-    required this.unselectedItemColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.grey,
-      backgroundColor: backgroundColor,
       elevation: 1.0,
       items: const [
         BottomNavigationBarItem(
@@ -41,14 +32,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
 class CustomControlButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Icon icon;
-  final Color foregroundColor;
-  final Color backgroundColor;
 
   const CustomControlButton({
     required this.onPressed,
     required this.icon,
-    required this.foregroundColor,
-    required this.backgroundColor,
   });
 
   @override
@@ -60,8 +47,6 @@ class CustomControlButton extends StatelessWidget {
       icon: icon,
       style: ElevatedButton.styleFrom(
         fixedSize: Size(MediaQuery.of(context).size.width / 3.5, 50),
-        foregroundColor: foregroundColor,
-        backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),
@@ -74,15 +59,15 @@ class CustomNumPad extends StatelessWidget {
   final double size;
   final Function(String) onTap;
   final double spacing;
-  final Color numberButtonColor;
-  final Color numberButtonTextColor;
+  // final Color numberButtonColor;
+  // final Color numberButtonTextColor;
 
   const CustomNumPad({
     required this.size,
     required this.onTap,
     required this.spacing,
-    required this.numberButtonColor,
-    required this.numberButtonTextColor,
+    // required this.numberButtonColor,
+    // required this.numberButtonTextColor,
   });
 
   @override
@@ -114,7 +99,7 @@ class CustomNumPad extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(70, 60),
-          backgroundColor: numberButtonColor,
+          // backgroundColor: numberButtonColor,
           elevation: 1,
         ),
         onPressed: () {
@@ -122,7 +107,7 @@ class CustomNumPad extends StatelessWidget {
         },
         child: Text(
           label,
-          style: TextStyle(color: numberButtonTextColor),
+          // style: TextStyle(color: numberButtonTextColor),
         ),
       ),
     );
@@ -156,8 +141,8 @@ class GradientBackgroundPainter extends CustomPainter {
   }
 }
 
-class inputBox extends StatelessWidget {
-  const inputBox({
+class InputBox extends StatelessWidget {
+  const InputBox({
     required this.width,
     required this.inputNumber,
     required this.height,
@@ -197,8 +182,8 @@ class inputBox extends StatelessWidget {
   }
 }
 
-class deleteButton extends StatelessWidget {
-  const deleteButton({
+class DeleteButton extends StatelessWidget {
+  const DeleteButton({
     required this.color,
     required this.onPressed,
   });

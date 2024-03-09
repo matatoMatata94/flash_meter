@@ -34,11 +34,4 @@ class ColorMapping {
       _darkColorPalette.primaryColorDark,
     );
   }
-
-  Color get dividerColor {
-    return _map(
-      _lightColorPalette.primaryColorDark,
-      _darkColorPalette.primaryColorDark,
-    );
-  }
 }
