@@ -18,6 +18,7 @@ class AppTheme {
       scaffoldBackgroundColor: color.scaffoldBackgroundColor,
       primaryColorLight: color.primaryColorLight,
       primaryColorDark: color.primaryColorDark,
+      appBarTheme: theme.appBarTheme,
       bottomNavigationBarTheme: theme.bottomNavigationBarTheme,
       iconButtonTheme: theme.iconButtonTheme,
       iconTheme: theme.iconTheme,

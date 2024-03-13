@@ -8,7 +8,7 @@ abstract class ColorPalette {
 
 class LightColorPalette implements ColorPalette {
   @override
-  Color get scaffoldBackgroundColor => Colors.white;
+  Color get scaffoldBackgroundColor => Colors.white70;
 
   @override
   Color get primaryColorLight => Colors.blue;
