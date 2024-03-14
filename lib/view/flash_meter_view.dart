@@ -34,25 +34,23 @@ class _FlashMeterAppState extends State<FlashMeterApp> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'FlashMeter',
-          style: TextStyle(color: Colors.white),
-        ),
         actions: [
           IconButton(
             onPressed: () {
               themeProvider.changeThemeMode();
             },
+            style: const ButtonStyle(
+              backgroundColor:
+                  MaterialStatePropertyAll<Color>(Colors.transparent),
+            ),
             icon: themeProvider.isLightMode
                 ? const Icon(
                     Icons.dark_mode_outlined,
                     size: 30,
-                    color: Colors.white,
                   )
                 : const Icon(
                     Icons.light_mode_outlined,
                     size: 30,
-                    color: Colors.black,
                   ),
           ),
         ],

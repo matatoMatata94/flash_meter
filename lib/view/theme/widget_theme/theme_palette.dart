@@ -23,7 +23,9 @@ class LightThemePalette implements ThemePalette {
   @override
   IconButtonThemeData get iconButtonTheme => const IconButtonThemeData(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll<Color>(Colors.green)),
+          backgroundColor: MaterialStatePropertyAll<Color>(Colors.white),
+          iconColor: MaterialStatePropertyAll<Color>(Colors.black),
+        ),
       );
 
   @override
@@ -43,7 +45,12 @@ class DarkThemePalette implements ThemePalette {
       const BottomNavigationBarThemeData();
 
   @override
-  IconButtonThemeData get iconButtonTheme => const IconButtonThemeData();
+  IconButtonThemeData get iconButtonTheme => const IconButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll<Color>(Colors.black),
+          iconColor: MaterialStatePropertyAll<Color>(Colors.white),
+        ),
+      );
 
   @override
   IconThemeData get iconTheme => const IconThemeData();

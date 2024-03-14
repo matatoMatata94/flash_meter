@@ -19,7 +19,7 @@ class LightColorPalette implements ColorPalette {
 
 class DarkColorPalette implements ColorPalette {
   @override
-  Color get scaffoldBackgroundColor => Colors.black;
+  Color get scaffoldBackgroundColor => Colors.black54;
 
   @override
   Color get primaryColorLight => Colors.grey;

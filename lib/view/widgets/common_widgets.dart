@@ -196,6 +196,9 @@ class DeleteButton extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.backspace),
       iconSize: 40,
+      style: const ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll<Color>(Colors.transparent),
+      ),
       onPressed: () {
         onPressed();
       },
