@@ -20,18 +20,4 @@ class ColorMapping {
       _darkColorPalette.scaffoldBackgroundColor,
     );
   }
-
-  Color get primaryColorLight {
-    return _map(
-      _lightColorPalette.primaryColorLight,
-      _darkColorPalette.primaryColorLight,
-    );
-  }
-
-  Color get primaryColorDark {
-    return _map(
-      _lightColorPalette.primaryColorDark,
-      _darkColorPalette.primaryColorDark,
-    );
-  }
 }

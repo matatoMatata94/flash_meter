@@ -16,13 +16,13 @@ class AppTheme {
   ThemeData get themeData {
     return ThemeData(
       scaffoldBackgroundColor: color.scaffoldBackgroundColor,
-      primaryColorLight: color.primaryColorLight,
-      primaryColorDark: color.primaryColorDark,
       appBarTheme: theme.appBarTheme,
       bottomNavigationBarTheme: theme.bottomNavigationBarTheme,
       iconButtonTheme: theme.iconButtonTheme,
       iconTheme: theme.iconTheme,
       elevatedButtonTheme: theme.elevatedButtonTheme,
+      cardTheme: theme.cardTheme,
+      textTheme: TextTheme(),
     );
   }
 }

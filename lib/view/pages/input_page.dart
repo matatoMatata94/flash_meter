@@ -44,7 +44,6 @@ class _InputPageState extends State<InputPage> {
                     width: size.width / 2.5,
                     inputNumber: inputNumber,
                     height: size.height / 12,
-                    boxColor: Colors.black,
                     textColor: Colors.white,
                   ),
                   DeleteButton(

@@ -23,14 +23,16 @@ class FavoritesPage extends StatelessWidget {
             controller.deleteFavorite(controller.favorites[index]);
           },
           direction: DismissDirection.endToStart,
-          child: ListTile(
-            title: Text(controller.favorites[index].title),
-            subtitle: Text('Nummer: ${controller.favorites[index].number}'),
-            onTap: () {
-              controller.currentIndex = 0;
-              controller.updateInputFieldFromFavorites(
-                  controller.favorites[index].number);
-            },
+          child: Card(
+            child: ListTile(
+              title: Text(controller.favorites[index].title),
+              subtitle: Text('Nummer: ${controller.favorites[index].number}'),
+              onTap: () {
+                controller.currentIndex = 0;
+                controller.updateInputFieldFromFavorites(
+                    controller.favorites[index].number);
+              },
+            ),
           ),
         );
       },

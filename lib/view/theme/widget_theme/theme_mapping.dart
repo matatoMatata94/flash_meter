@@ -31,6 +31,10 @@ class ThemeMapping {
     return _isLightMode ? light : dark;
   }
 
+  CardTheme _mapCardTheme(var light, var dark) {
+    return _isLightMode ? light : dark;
+  }
+
   AppBarTheme get appBarTheme {
     return _mapAppBarTheme(
       _lightThemePalette.appBarTheme,
@@ -63,6 +67,13 @@ class ThemeMapping {
     return _mapElevatedButtonTheme(
       _lightThemePalette.elevatedButtonTheme,
       _darkThemePalette.elevatedButtonTheme,
+    );
+  }
+
+  CardTheme get cardTheme {
+    return _mapCardTheme(
+      _lightThemePalette.cardTheme,
+      _darkThemePalette.cardTheme,
     );
   }
 }

@@ -114,47 +114,18 @@ class CustomNumPad extends StatelessWidget {
   }
 }
 
-class GradientBackgroundPainter extends CustomPainter {
-  final List<Color> backgroundColor;
-
-  GradientBackgroundPainter(this.backgroundColor);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Rect rect = Offset.zero & size;
-
-    final Gradient gradient = LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: backgroundColor,
-      stops: const [0.2, 1.0],
-    );
-
-    final Paint paint = Paint()..shader = gradient.createShader(rect);
-
-    canvas.drawRect(rect, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
-}
-
 class InputBox extends StatelessWidget {
   const InputBox({
     required this.width,
     required this.inputNumber,
     required this.height,
     required this.textColor,
-    required this.boxColor,
   });
 
   final double width;
   final double height;
   final String inputNumber;
   final Color textColor;
-  final Color boxColor;
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +136,6 @@ class InputBox extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
-          color: boxColor,
         ),
         borderRadius: BorderRadius.circular(10),
       ),
