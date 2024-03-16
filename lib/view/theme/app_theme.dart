@@ -15,14 +15,17 @@ class AppTheme {
 
   ThemeData get themeData {
     return ThemeData(
-      scaffoldBackgroundColor: color.scaffoldBackgroundColor,
-      appBarTheme: theme.appBarTheme,
-      bottomNavigationBarTheme: theme.bottomNavigationBarTheme,
-      iconButtonTheme: theme.iconButtonTheme,
-      iconTheme: theme.iconTheme,
-      elevatedButtonTheme: theme.elevatedButtonTheme,
-      cardTheme: theme.cardTheme,
-      textTheme: TextTheme(),
-    );
+        scaffoldBackgroundColor: color.scaffoldBackgroundColor,
+        appBarTheme: theme.appBarTheme,
+        bottomNavigationBarTheme: theme.bottomNavigationBarTheme,
+        iconButtonTheme: theme.iconButtonTheme,
+        iconTheme: theme.iconTheme,
+        elevatedButtonTheme: theme.elevatedButtonTheme,
+        cardTheme: theme.cardTheme,
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(
+            color: Colors.yellow,
+          ),
+        ));
   }
 }
