@@ -47,7 +47,6 @@ class _InputPageState extends State<InputPage> {
                     textColor: Colors.white,
                   ),
                   DeleteButton(
-                    color: Colors.white,
                     onPressed: () {
                       widget.controller.deleteLastInput();
                     },

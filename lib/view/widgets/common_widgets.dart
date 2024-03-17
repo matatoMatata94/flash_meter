@@ -59,35 +59,50 @@ class CustomNumPad extends StatelessWidget {
   final double size;
   final Function(String) onTap;
   final double spacing;
-  // final Color numberButtonColor;
-  // final Color numberButtonTextColor;
 
   const CustomNumPad({
     required this.size,
     required this.onTap,
     required this.spacing,
-    // required this.numberButtonColor,
-    // required this.numberButtonTextColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: size,
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        spacing: spacing,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          buildNumberButton('1'),
-          buildNumberButton('2'),
-          buildNumberButton('3'),
-          buildNumberButton('4'),
-          buildNumberButton('5'),
-          buildNumberButton('6'),
-          buildNumberButton('7'),
-          buildNumberButton('8'),
-          buildNumberButton('9'),
-          buildNumberButton('0'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildNumberButton('1'),
+              buildNumberButton('2'),
+              buildNumberButton('3'),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildNumberButton('4'),
+              buildNumberButton('5'),
+              buildNumberButton('6'),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildNumberButton('7'),
+              buildNumberButton('8'),
+              buildNumberButton('9'),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildNumberButton('0'),
+            ],
+          )
         ],
       ),
     );
@@ -99,7 +114,6 @@ class CustomNumPad extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(70, 60),
-          // backgroundColor: numberButtonColor,
           elevation: 1,
         ),
         onPressed: () {
@@ -107,7 +121,6 @@ class CustomNumPad extends StatelessWidget {
         },
         child: Text(
           label,
-          // style: TextStyle(color: numberButtonTextColor),
         ),
       ),
     );
@@ -154,11 +167,9 @@ class InputBox extends StatelessWidget {
 
 class DeleteButton extends StatelessWidget {
   const DeleteButton({
-    required this.color,
     required this.onPressed,
   });
 
-  final Color color;
   final VoidCallback onPressed;
 
   @override
@@ -172,7 +183,6 @@ class DeleteButton extends StatelessWidget {
       onPressed: () {
         onPressed();
       },
-      color: color,
     );
   }
 }
