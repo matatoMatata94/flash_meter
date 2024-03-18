@@ -25,7 +25,10 @@ class FavoritesPage extends StatelessWidget {
           direction: DismissDirection.endToStart,
           child: Card(
             child: ListTile(
-              title: Text(controller.favorites[index].title),
+              title: Text(
+                controller.favorites[index].title,
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
               subtitle: Text('Nummer: ${controller.favorites[index].number}'),
               onTap: () {
                 controller.currentIndex = 0;

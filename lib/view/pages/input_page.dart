@@ -53,17 +53,15 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               CustomNumPad(
                 onTap: (label) {
                   widget.controller.updateInputFieldFromInput(label);
                 },
                 spacing: 10,
                 size: size.width,
-                // numberButtonColor: colorConstants.numberButtonColor,
-                // numberButtonTextColor: colorConstants.numberButtonTextColor,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
